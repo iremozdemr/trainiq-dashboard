@@ -1,56 +1,97 @@
 /*
-document.addEventListener('DOMContentLoaded', function() {
-    fetch('https://demotrainiq.com/case/dashboard')
-        .then(response => response.json())
-        .then(data => {
-            const parsedData = data.data;
-            displayStats(parsedData);
-            if (parsedData.teams && Array.isArray(parsedData.teams)) {
-                displayTeams(parsedData.teams);
+document.addEventListener("DOMContentLoaded", function() {
+    const API_URL = "https://demotrainiq.com/case/dashboard";
+
+    async function fetchData() {
+        try {
+            const response = await fetch(API_URL);
+            const data = await response.json();
+
+            if (data && data.data) {
+                updateDashboard(data.data);
             } else {
-                console.error('Teams data is not available or not in the correct format.');
+                console.error("Invalid data format");
             }
-        })
-        .catch(error => console.error('Error fetching data:', error));
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
+    }
+
+    function updateDashboard(data) {
+        const totalEmployees = document.querySelector(".total.employees .second-p");
+        const totalCourses = document.querySelector(".total.courses .second-p");
+        const averageScore = document.querySelector(".total.score .second-p");
+
+        totalEmployees.textContent = data.total_employees;
+        totalCourses.textContent = data.total_completed_courses;
+        averageScore.textContent = data.average_employee_score;
+    }
+
+    fetchData();
 });
-
-function displayStats(data) {
-    const statsSection = document.getElementById('stats');
-    statsSection.innerHTML = `
-        <h2>General Statistics</h2>
-        <p>Total Employees: ${data.total_employees}</p>
-        <p>Total Completed Courses: ${data.total_completed_courses}</p>
-        <p>Average Employee Score: ${data.average_employee_score}</p>
-    `;
-}
-
-function displayTeams(teams) {
-    const teamsSection = document.getElementById('teams');
-    teamsSection.innerHTML = '<h2>Teams</h2>';
-    
-    teams.forEach(team => {
-        const teamDiv = document.createElement('div');
-        teamDiv.classList.add('team');
-        
-        teamDiv.innerHTML = `
-            <h3>${team.title}</h3>
-            <p>Description: ${team.description}</p>
-            <p>Total Members: ${team.total_employee_count}</p>
-            <p>Overall Score: ${team.overall_score}</p>
-            <div class="members">
-                ${team.employees.map(member => `
-                    <div class="member">
-                        <h4>${member.name} (${member.title})</h4>
-                        <p>Email: ${member.email}</p>
-                        <p>Courses Taken: ${member.lessons_taken}</p>
-                        <p>Current Score: ${member.current_score}</p>
-                        <p>Skills Being Developed: ${member.skills_being_developed.join(', ')}</p>
-                    </div>
-                `).join('')}
-            </div>
-        `;
-        
-        teamsSection.appendChild(teamDiv);
-    });
-}
 */
+
+document.addEventListener("DOMContentLoaded", function() {
+    const API_URL = "https://demotrainiq.com/case/dashboard";
+
+    async function fetchData() {
+        try {
+            const response = await fetch(API_URL);
+            const data = await response.json();
+
+            if (data && data.data && data.data.teams) {
+                updateDashboard(data.data.teams);
+                updateStatistics(data.data.total_employees, data.data.total_completed_courses, data.data.average_employee_score);
+            } else {
+                console.error("Invalid data format or missing teams data");
+            }
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
+    }
+
+    function updateDashboard(teams) {
+        const teamsContainer = document.getElementById("teams-container");
+
+        teams.forEach(team => {
+            const teamCard = document.createElement("div");
+            teamCard.classList.add("ag-courses_item");
+
+            teamCard.innerHTML = `
+                <a href="#" class="ag-courses-item_link">
+                    <div class="ag-courses-item_bg"></div>
+                    <div class="ag-courses-item_title">${team.title}</div>
+                    <div class="ag-courses-item_date-box">
+                        Description: ${team.description}
+                    </div>
+                    <div class="ag-courses-item_date-box">
+                        Total Members: ${team.total_employee_count}
+                    </div>
+                    <div class="ag-courses-item_date-box">
+                        Overall Score: ${team.overall_score}
+                    </div>
+                    <div class="ag-courses-item_date-box">
+                        <p>Employees:</p>
+                        <ul>
+                            ${team.employees.map(employee => `<li>${employee.name} - ${employee.title}</li>`).join('')}
+                        </ul>
+                    </div>
+                </a>
+            `;
+
+            teamsContainer.appendChild(teamCard);
+        });
+    }
+
+    function updateStatistics(totalEmployees, totalCourses, averageScore) {
+        const totalEmployeesElement = document.querySelector(".total.employees .second-p");
+        const totalCoursesElement = document.querySelector(".total.courses .second-p");
+        const averageScoreElement = document.querySelector(".total.score .second-p");
+
+        totalEmployeesElement.textContent = totalEmployees;
+        totalCoursesElement.textContent = totalCourses;
+        averageScoreElement.textContent = averageScore;
+    }
+
+    fetchData();
+});

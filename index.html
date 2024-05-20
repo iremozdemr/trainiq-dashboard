@@ -5,13 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.3.0/uicons-solid-rounded/css/uicons-solid-rounded.css'>
-    <title>dashboard</title>
+    <title>Dashboard</title>
 </head>
 <body>
     <div class="container">
         <header>
-            <!-- <h1>Dashboard</h1> -->
-            <h1>Overview</h1>
+            <p class="h1">Overview</p>
 
             <div class="header-buttons">
                 <button class="create button">Create New Team</button>
@@ -20,30 +19,38 @@
         </header>
         <main>
             <section class="statistics">
-                <h3>General Statistics</h3>
+                <p class="h3">General Statistics</p>
 
                 <div class="squares">
                     <div class="total employees">
                         <i class="fi fi-sr-users-alt"></i>
-                        <p>Total Employees</p>
-                        <p>14</p>
+                        <p class="first-p">Total Employees</p>
+                        <p class="second-p">0</p>
+                        <!-- initial value will be updated by js -->
                     </div>
     
                     <div class="total courses">
                         <i class="fi fi-sr-list-check"></i>
-                        <p>Total Completed Courses</p>
-                        <p>20</p>
+                        <p class="first-p">Total Completed Courses</p>
+                        <p class="second-p">0</p>
+                        <!-- initial value will be updated by js -->
                     </div>
     
                     <div class="total score">
                         <i class="fi fi-sr-features"></i>
-                        <p>Average Employee Score</p>
-                        <p>200</p>
+                        <p class="first-p">Average Employee Score</p>
+                        <p class="second-p">0</p>
+                        <!-- initial value will be updated by js -->
                     </div>
                 </div>
             </section>
             <section class="teams">
-                <!-- teams and their members details will be displayed here -->
+                <p class="h3">Teams</p>
+                <div class="ag-format-container">
+                    <div class="ag-courses_box" id="teams-container">
+                        <!-- placeholder for dynamically generated team cards -->
+                    </div>
+                </div>
             </section>
         </main>
     </div>
