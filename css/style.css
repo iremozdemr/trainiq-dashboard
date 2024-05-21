@@ -62,13 +62,14 @@ header{
 .h1{
     font-size: 2.5rem;
     margin: 0.5rem;
-    font-weight: bold;
+    font-weight: 800;
 }
 
 .header-buttons{
     margin-top: 0.2em;
     display: flex;
     flex-direction: column;
+    font-weight: 500;
 }
 
 .button{
@@ -95,7 +96,11 @@ header{
 .h3{
     font-size: 1.8rem;
     margin: 10px;
-    font-weight: bold;
+    font-weight: 600;
+}
+
+.h4{
+    font-weight: 500;
 }
 
 .squares{
@@ -182,7 +187,7 @@ header{
     min-height: 87px;
     margin: 0 0 10px;
     overflow: hidden;
-    font-weight: bold;
+    font-weight: 600;
     font-size: 30px;
     color: var(--white);
     z-index: 2;
@@ -222,6 +227,10 @@ header{
 }
 .ag-courses_item:nth-child(4n) .ag-courses-item_bg {
     background-color: var(--light-brown);
+}
+
+ul{
+    list-style-position: inside;
 }
   
 @media only screen and (max-width: 1200px) {

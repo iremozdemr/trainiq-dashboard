@@ -29,20 +29,27 @@ document.addEventListener("DOMContentLoaded", function() {
                     <div class="ag-courses-item_bg"></div>
                     <div class="ag-courses-item_title">${team.title}</div>
                     <div class="ag-courses-item_date-box">
-                        Description: ${team.description}
+                        <h4>Description:</h4>
+                        ${team.description}
                     </div>
+                    <br>
                     <div class="ag-courses-item_date-box">
-                        Total Members: ${team.total_employee_count}
+                        <h4>Total Members:</h4>
+                        ${team.total_employee_count}
                     </div>
+                    <br>
                     <div class="ag-courses-item_date-box">
-                        Overall Score: ${team.overall_score}
+                        <h4>Overall Score:</h4>
+                        ${team.overall_score}
                     </div>
+                    <br>
                     <div class="ag-courses-item_date-box">
-                        <p>Employees:</p>
+                        <h4>Employees:</h4>
                         <ul>
                             ${team.employees.map(employee => `<li>${employee.name} - ${employee.title}</li>`).join('')}
                         </ul>
                     </div>
+                    <br>
                 </a>
             `;
 
