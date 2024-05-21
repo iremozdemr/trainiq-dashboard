@@ -1,36 +1,3 @@
-/*
-document.addEventListener("DOMContentLoaded", function() {
-    const API_URL = "https://demotrainiq.com/case/dashboard";
-
-    async function fetchData() {
-        try {
-            const response = await fetch(API_URL);
-            const data = await response.json();
-
-            if (data && data.data) {
-                updateDashboard(data.data);
-            } else {
-                console.error("Invalid data format");
-            }
-        } catch (error) {
-            console.error("Error fetching data:", error);
-        }
-    }
-
-    function updateDashboard(data) {
-        const totalEmployees = document.querySelector(".total.employees .second-p");
-        const totalCourses = document.querySelector(".total.courses .second-p");
-        const averageScore = document.querySelector(".total.score .second-p");
-
-        totalEmployees.textContent = data.total_employees;
-        totalCourses.textContent = data.total_completed_courses;
-        averageScore.textContent = data.average_employee_score;
-    }
-
-    fetchData();
-});
-*/
-
 document.addEventListener("DOMContentLoaded", function() {
     const API_URL = "https://demotrainiq.com/case/dashboard";
 
