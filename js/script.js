@@ -79,10 +79,8 @@ document.addEventListener("DOMContentLoaded", async function() {
             const data = await response.json();
 
             if (data && data.data && data.data.activity_hours) {
-                // Verileri tarihlerine göre gruplayıp ortalama değerlerini hesapla
                 const groupedData = groupDataByDate(data.data.activity_hours);
 
-                // Çizgi grafiği oluştur
                 createLineChart(groupedData);
             } else {
                 console.error("Invalid data format or missing activity hours data");
@@ -92,7 +90,6 @@ document.addEventListener("DOMContentLoaded", async function() {
         }
     }
 
-    // Verileri tarihlerine göre gruplayan ve ortalama değerlerini hesaplayan fonksiyon
     function groupDataByDate(activityData) {
         const groupedData = {};
 
@@ -110,7 +107,6 @@ document.addEventListener("DOMContentLoaded", async function() {
             groupedData[date].examsCompleted.push(entry.exams_completed);
         });
 
-        // Ortalama değerleri hesapla
         Object.keys(groupedData).forEach(date => {
             const data = groupedData[date];
             groupedData[date] = {
@@ -123,18 +119,14 @@ document.addEventListener("DOMContentLoaded", async function() {
         return groupedData;
     }
 
-    // Ortalama hesaplama fonksiyonu
     function calculateAverage(values) {
         const sum = values.reduce((acc, curr) => acc + curr, 0);
         return sum / values.length || 0;
     }
 
-    // Çizgi grafiği oluşturan fonksiyon
     function createLineChart(data) {
-        // Çizgi grafiği oluşturulacak yerin referansı
         const chartContainer = document.getElementById("line-chart-container");
 
-        // Verileri çizgi grafiği formatına dönüştür
         const chartData = {
             labels: Object.keys(data),
             datasets: [
@@ -162,7 +154,6 @@ document.addEventListener("DOMContentLoaded", async function() {
             ]
         };
 
-        // Çizgi grafiği oluştur
         const lineChart = new Chart(chartContainer, {
             type: "line",
             data: chartData,
@@ -178,6 +169,5 @@ document.addEventListener("DOMContentLoaded", async function() {
         });
     }
 
-    // Verileri çek
     fetchData();
 });
