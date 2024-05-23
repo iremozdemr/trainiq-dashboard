@@ -43,7 +43,7 @@ https://trainiq-dashboard.vercel.app
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/your-username/dashboard-ui.git
+    git clone https://github.com/iremozdemr/trainiq-dashboard.git
     ```
 
 2. Navigate to the project directory:
