@@ -274,3 +274,7 @@ ul{
     }
 }
 /* teams end */
+
+#line-chart-container{
+    margin: 100px;
+}
