@@ -2,6 +2,10 @@
 
 Welcome to the Dashboard UI project! This repository contains the code for a front-end web application that displays data fetched from a backend API. The application presents an overview of teams, employees, and statistics for a learning platform of a fictional company.
 
+Website link:
+
+https://trainiq-dashboard.vercel.app
+
 ## Project Structure
 
 ```
@@ -109,7 +113,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
 ## Deployment
 
-The project can be deployed to any hosting service. Once deployed, please provide the URL in this README file.
+This website deployed using Vercel: 
+
+https://trainiq-dashboard.vercel.app
 
 ## Contact
 
