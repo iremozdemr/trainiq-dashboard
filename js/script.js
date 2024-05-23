@@ -154,6 +154,7 @@ document.addEventListener("DOMContentLoaded", async function() {
             ]
         };
 
+        /*
         const lineChart = new Chart(chartContainer, {
             type: "line",
             data: chartData,
@@ -165,6 +166,22 @@ document.addEventListener("DOMContentLoaded", async function() {
                         }
                     }]
                 }
+            }
+        });
+        */
+
+        new Chart(chartContainer, {
+            type: "line",
+            data: chartData,
+            options: {
+              scales: {
+                xAxes: [{
+                  ticks: {
+                    color: "red",
+                    beginAtZero: true
+                  }
+                }]
+              }
             }
         });
     }
